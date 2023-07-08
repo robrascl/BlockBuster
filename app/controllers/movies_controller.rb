@@ -37,9 +37,27 @@ class MoviesController < ApplicationController
 
   # PATCH/PUT /movies/1 or /movies/1.json
   def update
+
+    @elcli = params["movie"]
+    @lapeli = params["id"]
+ 
+    print "\nXXxXXXXXXXXXXXXXXXXXXXXXXXXXX\n"
+    print " #{@elcli}  " + " -> " + "  #{@elcli["clients_id"]} "
+    @idcli = @elcli["clients_id"]
+    print "\nXXxXXXXXXXXXXXXXXXXXXXXXXXXXX\n"
+    print @lapeli
+    print "\nXXxXXXXXXXXXXXXXXXXXXXXXXXXXX\n"
+    @lapelicula = {"movie_id"=>"#{@lapeli}"  }
+    print @lapelicula
+    print "\nXXxXXXXXXXXXXXXXXXXXXXXXXXXXX\n"
+
+
     respond_to do |format|
       if @movie.update(movie_params)
-        format.html { redirect_to movie_url(@movie), notice: "Movie was successfully updated." }
+       # @movie.clients.find(@idcli)
+        @movie.clients.update(@idcli, :movie_id => @lapeli )
+        #Movie.find(client.movie_id)
+        format.html { redirect_to movie_url(@movie), notice: "Movie was successfully updated.DDDD" }
         format.json { render :show, status: :ok, location: @movie }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -71,5 +89,6 @@ class MoviesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def movie_params
       params.require(:movie).permit(:name )
+      #params.require(:movie).permit(:name, clients_attributes: [:id, :name, :age]  )
     end
 end

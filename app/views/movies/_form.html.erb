@@ -12,18 +12,19 @@
   <% end %>
 
   <div>
+     <p> _form</p>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
-
   <div>
     <%= form.label :client_id, style: "display: block" %>
 
-    <%= form.select :client_id, options_for_select(@clients) %>
+    <%= form.select :clients_id, options_for_select(@clients) %>
 
-    <%= form.collection_radio_buttons(:client_ids, Client.all, :id, :name) %>
+    
 
   </div>
+
 
   <div>
     <%= form.submit %>

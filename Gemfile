@@ -76,3 +76,7 @@ gem 'faker', '~> 3.2'
 gem "cssbundling-rails", "~> 1.1"
 
 gem "jsbundling-rails", "~> 1.0"
+
+gem 'pg_search', '~> 2.3', '>= 2.3.6'
+
+gem 'pagy', '~> 6.0', '>= 6.0.4'

@@ -1,15 +1,17 @@
 <div id="<%= dom_id client %>">
-    <table class="table  table-bordered border-primary">
+ 
+     <table class="table  table-bordered border-primary">
       <thead>
         <tr>
           <th scope="col">#</th>
           <th scope="col">Name</th>
           <th scope="col">Age</th>
           <th scope="col">Movie</th>
-      
+          <th scope="col" colspan="3"></th>
         </tr>
       </thead>
       <tbody>
+ 
   <tr>
     <th scope="row"><%= client.id %></th>
     <td><%= client.name %></td>
@@ -18,7 +20,7 @@
           <% @peli = Movie.find(client.movie_id) %>  
           <td> <%= @peli.name %>   </td>
     <% end %>
-  
+    
   </tr>
         </tbody>
     </table>

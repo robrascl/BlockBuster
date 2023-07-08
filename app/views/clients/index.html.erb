@@ -3,10 +3,11 @@
 <div class="container">
   <h1>Clients</h1>
 
-  <%= link_to "New client", new_client_path %>
+
+  <%= link_to image_tag('addc.svg'), new_client_path , title: "Add tweet"%>
 
   <div id="clients">
-    <table class="table table-bordered">
+    <table class="table  table-bordered border-primary">
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -17,9 +18,22 @@
         </tr>
       </thead>
       <tbody>
-        <% @clients.each do |client| %>
-          <%= render client %>
-        <% end %>
+            <% @clients.each do |client| %>
+                <tr>
+                    <th scope="row"><%=client.id %></th>
+                    <td><%= client.name%></td>
+                    <td><%= client.age%></td>
+                    <% if client.movie_id? %>
+                          <% @peli = Movie.find(client.movie_id) %>  
+                          <td> <%= @peli.name %>   </td>
+                    <% else %>
+                           <td>    </td>
+                    <% end %>
+                    <td> <%= link_to image_tag('view20.svg'), client, title: "View Client" %> </td>
+                </tr>
+            <% end %>
+
+
       </tbody>
     </table>
   </div>

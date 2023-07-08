@@ -54,9 +54,7 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       if @movie.update(movie_params)
-       # @movie.clients.find(@idcli)
         @movie.clients.update(@idcli, :movie_id => @lapeli )
-        #Movie.find(client.movie_id)
         format.html { redirect_to movie_url(@movie), notice: "Movie was successfully updated.DDDD" }
         format.json { render :show, status: :ok, location: @movie }
       else

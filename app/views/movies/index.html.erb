@@ -2,12 +2,47 @@
 
 <div class="container">
   <h1>Movies</h1>
-  <%= link_to "New movie", new_movie_path %>
+  <%= link_to image_tag('addc.svg'), new_movie_path , title: "Add tweet"%>
+ 
+
   <div id="movies">
     <div class="row">
+
+
       <% @movies.each do |movie| %>
-        <%= render movie %>
+              <div class="col-4 py-2">
+                <div class="card">
+                  <div class="card-body">
+                  <p> </p>
+                    <h5 class="card-title"><%= image_tag "movie_info.svg"%> <%= movie.name %></h5>
+                        <div class="container text-center">
+                          <div class="row row-cols-auto">
+                              <div class="col">
+                                  <%= link_to image_tag('view20.svg'), movie ,class: "btn btn-light"  , title: "View movie" %> 
+                              </div>
+                              <div class="col">
+                                  <%= link_to image_tag('editc.svg'), edit_movie_path(movie) ,class: "btn btn-light"  , title: "Edit Movie" %> 
+                              </div>
+                          </div>
+                        </div>
+
+                  </div>
+                </div>
+              </div>
       <% end %>
+
+
+
+
+      
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
